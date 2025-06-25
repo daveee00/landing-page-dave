@@ -100,8 +100,8 @@ width: 50%;
 
 #load-btn {
     margin-top: 32px;
-    height: 5%;
-    width: 20%;
+    height: 8%;
+    width: 40%;
     opacity: 0;
     transform: translateY(-20px);
     animation: buttonDissolve 1s ease-out forwards;
