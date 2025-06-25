@@ -1,54 +1,62 @@
-// initial.js - Hide all content except #top when loader is visible
+// initial.js - Prevent glitch by hiding content initially
 (function() {
     'use strict';
     
-    // Function to check if loader is visible
-    function isLoaderVisible() {
-        const loader = document.querySelector('.loader');
-        if (!loader) return false;
+    // Immediately hide all content except loader and #top
+    // This runs before any other scripts or styles load
+    function hideContentImmediately() {
+        // Get all body children except loader and #top
+        const body = document.body;
+        if (!body) return;
         
+        const children = Array.from(body.children);
+        children.forEach(child => {
+            if (!child.classList.contains('loader') && child.id !== 'top') {
+                child.style.setProperty('display', 'none', 'important');
+            }
+        });
+    }
+    
+    // Function to show all content when loader is hidden
+    function showAllContent() {
+        const body = document.body;
+        if (!body) return;
+        
+        const children = Array.from(body.children);
+        children.forEach(child => {
+            if (!child.classList.contains('loader') && child.id !== 'top') {
+                child.style.removeProperty('display');
+            }
+        });
+    }
+    
+    // Function to check if loader should be hidden
+    function shouldHideLoader() {
+        const loader = document.querySelector('.loader');
+        if (!loader) return true;
+        
+        // Check if loader has a data attribute indicating it should be hidden
+        if (loader.dataset.hide === 'true') return true;
+        
+        // Check if loader has a specific class indicating it should be hidden
+        if (loader.classList.contains('hidden') || loader.classList.contains('hide')) return true;
+        
+        // Check computed styles
         const style = window.getComputedStyle(loader);
-        return style.display !== 'none' && 
-               style.visibility !== 'hidden' && 
-               style.opacity !== '0' &&
-               loader.offsetParent !== null;
-    }
-    
-    // Function to toggle content visibility
-    function toggleContentVisibility() {
-        const loader = document.querySelector('.loader');
-        const topElement = document.querySelector('#top');
-        const allContent = document.querySelectorAll('body > *:not(.loader):not(#top)');
+        if (style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0') return true;
         
-        if (isLoaderVisible()) {
-            // Hide all content except loader and #top
-            allContent.forEach(element => {
-                element.style.display = 'none';
-            });
-            
-            // Ensure #top is visible
-            if (topElement) {
-                topElement.style.display = '';
-            }
-            
-            // Ensure loader is visible
-            if (loader) {
-                loader.style.display = '';
-                loader.style.visibility = 'visible';
-                loader.style.opacity = '1';
-            }
-        } else {
-            // Show all content when loader is hidden
-            allContent.forEach(element => {
-                element.style.display = '';
-            });
-        }
+        return false;
     }
     
-    // Run immediately when script loads
-    toggleContentVisibility();
+    // Run immediately
+    hideContentImmediately();
     
-    // Set up observer to watch for loader visibility changes
+    // Also run when DOM is ready (in case script runs before body exists)
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', hideContentImmediately);
+    }
+    
+    // Set up observer to watch for loader state changes
     function setupObserver() {
         const loader = document.querySelector('.loader');
         if (!loader) return;
@@ -56,10 +64,12 @@
         // Create observer to watch for attribute changes
         const observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
-                if (mutation.type === 'attributes' && 
-                    (mutation.attributeName === 'style' || 
-                     mutation.attributeName === 'class')) {
-                    toggleContentVisibility();
+                if (mutation.type === 'attributes') {
+                    if (shouldHideLoader()) {
+                        showAllContent();
+                    } else {
+                        hideContentImmediately();
+                    }
                 }
             });
         });
@@ -67,18 +77,7 @@
         // Observe the loader element
         observer.observe(loader, {
             attributes: true,
-            attributeFilter: ['style', 'class']
-        });
-        
-        // Also watch for display changes via CSS
-        const styleObserver = new MutationObserver(function() {
-            toggleContentVisibility();
-        });
-        
-        // Observe the document head for style changes
-        styleObserver.observe(document.head, {
-            childList: true,
-            subtree: true
+            attributeFilter: ['style', 'class', 'data-hide']
         });
     }
     
@@ -89,11 +88,25 @@
         setupObserver();
     }
     
-    // Also check periodically for any missed changes
-    setInterval(toggleContentVisibility, 100);
+    // Check periodically and also provide manual control
+    setInterval(function() {
+        if (shouldHideLoader()) {
+            showAllContent();
+        }
+    }, 50);
     
-    // Expose function globally for manual control
-    window.toggleContentVisibility = toggleContentVisibility;
-    window.isLoaderVisible = isLoaderVisible;
+    // Expose functions globally for manual control
+    window.hideContentImmediately = hideContentImmediately;
+    window.showAllContent = showAllContent;
+    window.shouldHideLoader = shouldHideLoader;
+    
+    // Provide a simple way to hide loader
+    window.hideLoader = function() {
+        const loader = document.querySelector('.loader');
+        if (loader) {
+            loader.dataset.hide = 'true';
+            showAllContent();
+        }
+    };
     
 })(); 
