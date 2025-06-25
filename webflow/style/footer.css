@@ -1,0 +1,25 @@
+.last-space {
+  width: 100vw;
+  height: 8px;
+  border-bottom: 2px solid black;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4px;
+}
+
+footer p {
+  font-size: 12px;
+font-weight: 500;
+text-align: left;
+margin-left: 20px;
+}
+
+footer img {
+  height: 30px;
+  margin-right: 20px;
+}
