@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Day/Night Test</title>
+    <style>
+        .bg-picture {
+            height: 100vh;
+            width: 100vw;
+            background-size: cover;
+            position: fixed;
+            top: 0;
+            z-index: -1;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+        }
+        .loader {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            background-size: cover;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease-out;
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-picture"></div>
+    <div class="loader">
+        <h1>Day/Night Background Test</h1>
+        <p>Current time: <span id="time"></span></p>
+        <p>Main background: <span id="main-bg"></span></p>
+        <p>Loader background: <span id="loader-bg"></span></p>
+    </div>
+    
+    <script>
+        function setDayNightBackground() {
+            const bgPicture = document.querySelector('.bg-picture');
+            const loader = document.querySelector('.loader');
+            const timeSpan = document.getElementById('time');
+            const mainBgSpan = document.getElementById('main-bg');
+            const loaderBgSpan = document.getElementById('loader-bg');
+            
+            if (!bgPicture) {
+                console.error('bg-picture element not found');
+                return;
+            }
+            
+            if (!loader) {
+                console.error('loader element not found');
+                return;
+            }
+            
+            const currentHour = new Date().getHours();
+            timeSpan.textContent = currentHour + ':00';
+            console.log('Current hour:', currentHour);
+            
+            if (currentHour >= 8 && currentHour < 19) {
+                bgPicture.style.backgroundImage = 'url(./cute.webp)';
+                loader.style.backgroundImage = 'url(./cute.webp)';
+                mainBgSpan.textContent = 'cute.webp (daytime)';
+                loaderBgSpan.textContent = 'cute.webp (daytime)';
+                console.log('Setting daytime background: cute.webp');
+            } else {
+                bgPicture.style.backgroundImage = 'url(./sunset.jpeg)';
+                loader.style.backgroundImage = 'url(./sunset.jpeg)';
+                mainBgSpan.textContent = 'sunset.jpeg (nighttime)';
+                loaderBgSpan.textContent = 'sunset.jpeg (nighttime)';
+                console.log('Setting nighttime background: sunset.jpeg');
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, setting day/night background');
+            setDayNightBackground();
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,137 @@
+@font-face {
+  font-family: 'Humane';
+  src: url('https://cdn.jsdelivr.net/gh/daveee00/drawings/fonts/Humane-font/Humane-Bold.otf') format('opentype'),
+       url('https://cdn.jsdelivr.net/gh/daveee00/drawings/fonts/Humane-font/Humane-Bold.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/daveee00/drawings/fonts/Humane-font/Humane-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Humane';
+  src: url('https://cdn.jsdelivr.net/gh/daveee00/drawings/fonts/Humane-font/Humane-Medium.otf') format('opentype'),
+       url('https://cdn.jsdelivr.net/gh/daveee00/drawings/fonts/Humane-font/Humane-Medium.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/daveee00/drawings/fonts/Humane-font/Humane-Medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.text-bigger p {
+  color: #231815;
+  flex: none;
+  font-feature-settings: "palt" 1;
+  font-family: monospace !important;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  height: auto;
+  letter-spacing: normal;
+  line-height: 1.05;
+  margin: 0px;
+  text-align: left;
+  width: calc(100% - (var(--gap-h-6aafdb5d-42fa-4e10-8eb9-428f585b1340) * 0));
+  max-width: calc(
+    100% - (var(--gap-h-6aafdb5d-42fa-4e10-8eb9-428f585b1340) * 0)
+  );
+  justify-content: flex-start;
+}
+
+.text-smaller p {
+    color: #231815;
+    flex: none;
+    font-feature-settings: "palt" 1;
+    font-size: 16px;
+    font-style: normal;
+    font-family: monospace !important;
+    font-weight: 500;
+    height: auto;
+    letter-spacing: normal;
+    line-height: 1.05;
+    margin: 0px;
+    text-align: left;
+    width: calc(100% - (var(--gap-h-6aafdb5d-42fa-4e10-8eb9-428f585b1340) * 0));
+    max-width: calc(
+      100% - (var(--gap-h-6aafdb5d-42fa-4e10-8eb9-428f585b1340) * 0)
+    );
+    justify-content: flex-start;
+}
+
+.title-drawing p {
+  font-family: "Humane" !important;
+  font-size: 9em;
+  font-weight: 600;
+  line-height: 1 !important;
+  height: 1em !important;
+  display: block !important;
+  position: relative !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  transform-origin: left top !important;
+  transform: translateZ(0) !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.content .content-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 2;
+}
+
+.content .content-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+.content .content-drawing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+}
+
+.content .content-drawing img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.content .content-suggestions {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: end;
+}
+
+.content-title {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  z-index: 2 !important;
+  overflow: visible !important;
+}

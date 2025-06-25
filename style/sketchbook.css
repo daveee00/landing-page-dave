@@ -1,0 +1,261 @@
+/**/
+
+.sketchbook-wrapper{
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sketch-container {
+  width: calc(100% - 80px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 8px;
+}
+
+.sketch-title {
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  font-family: 'humane';
+  text-transform: uppercase;
+  font-size: 9rem;
+  padding: 0;
+  margin: 0;
+}
+.sketch-area {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 64px;
+}
+
+.ui-info {
+  position: relative;
+  width: 100%;
+  text-align: right;
+  opacity: .5;
+}
+
+.sketchbook-container {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+.sketchbook-heading {
+  height: fit-content;
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.title-drawing p {
+  font-family: "Humane" !important;
+  font-size: 6em;
+  font-weight: 600;
+  line-height: 1 !important;
+  height: 1em !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.sketchbook-heading p {
+  margin-top: 4% !important;
+  margin-left: 45%;
+  position: relative;
+  left: 0;
+}
+
+.sketchbook-canvas-area {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: space-between;
+  align-items: end;
+  gap: 64px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.sketchbook-canvas {
+  height: 60vh;
+  margin-bottom: 120px;
+}
+
+#skt-canvas {
+  aspect-ratio: 1.41/1;
+  z-index: 1;
+  background: url(https://cdn.jsdelivr.net/gh/daveee00/drawings/paper-texture.jpg);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#skt-canvas img {
+  height: 100%;
+  mix-blend-mode: normal;
+}
+
+/*––––––––––––––––––––––––––––––––––––––––––*/
+/*––––––––––––––––––––––––––––––––––––––––––*/
+
+#list-canvas {
+  aspect-ratio: 6/5;
+  display: block;
+  overflow: scroll;
+}
+
+#list-canvas button {
+  width: 100%;
+  height: 56px;
+  border: none;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+#list-canvas .list-element p {
+  margin-left: 8px;
+  font-family: monospace;
+  font-weight: 400;
+  font-size: 1em;
+  letter-spacing: 0% !important;
+  opacity: .5 !important;
+  color: black;
+}
+#list-canvas .list-element p .list-artist {
+  font-family: inherit;
+  opacity: .3;
+}
+.list-song {
+  font-weight: 800 !important;
+} 
+
+#list-canvas .list-element:hover {
+  opacity: calc(100%);
+}
+
+#list-canvas .list-element:hover .list-artist {
+  opacity: calc(50%);
+}
+
+#list-canvas .list-element-after {
+  opacity: calc(100%);
+}
+
+#list-canvas .list-artist-after {
+  opacity: calc(50%);
+}
+
+#list-canvas .button-after {
+  width: 100%;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  opacity: calc(100%);
+  display: flex;
+  align-items: center;
+}
+
+.glass-xs {
+  background: rgba(255, 255, 255, 0.1); /* semi-transparent */
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px); /* main effect */
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border */
+}
+
+.glass-xs:hover {
+  background: rgba(255, 255, 255, 0.4); /* semi-transparent */
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px); /* main effect */
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+#scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: 10%;
+}
+
+#scroll-indicator p {
+  width: 20vh;
+  transform: rotate(90deg);
+  translate: 0% 100%;
+}
+
+#scroll-indicator .skt-scroll-line {
+  margin-top: 80px;
+  height: 50%; 
+  width: 2px;
+  border-radius: 10px;
+}
+
+#scroll-indicator .skt-scroll-line {
+  width: 2%;
+  height: 60%;
+  position: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+}
+
+#scroll-indicator #scrolling-line-skt {
+  height: 100%;
+  width: 2.5px;
+  border-radius: 10px;
+  opacity: calc(50%);
+  background: black;
+}
+
+.information-scroll {
+  display: none;
+}

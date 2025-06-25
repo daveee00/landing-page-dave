@@ -1,0 +1,110 @@
+.suggestions-and-links {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+
+.suggestions-player {
+  height: 68px;
+  width: 440px;
+  border: 2px solid black;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 500ms ease-out;
+}
+
+.external-links {
+  height: 68px;
+  width: 440px;
+  border-radius: 16px;
+  display: none;
+  flex-direction: row-reverse;
+  justify-content: right;
+  align-items: center;
+  transition: all 500ms ease-out;
+}
+
+#ext-links {
+  display: none;
+  transition: 500ms ease-out;
+}
+
+#ext-links.visible {
+  display: flex;
+}
+
+.cover-and-info {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.cover {
+  height: 80%;
+  aspect-ratio: 1/1;
+  margin-left: 20px;
+  border-radius: 4px;
+}
+
+#first {
+  background: url(../assets/images/cover/tun.jpg);
+  background-size: contain;
+}
+
+#second {
+  background: url(../assets/images/cover/espresso.jpeg);
+  background-size: contain;
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  margin-left: 8px;
+}
+
+.infos p {
+  margin: 0;
+}
+
+.infos .artist {
+  opacity: calc(40%);
+}
+
+.content-suggestions button {
+  height: 32px;
+  aspect-ratio: 1/1;
+  border: none;
+  background: none;
+  border-radius: 50%;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-suggestions button.rotated {
+  transform: rotate(180deg);
+}
+
+.content-suggestions button svg {
+  height: 300%;
+  width: 300%;
+}
+
+.content-suggestions button:hover {
+  cursor: pointer;
+}
+
+/**/
+
+.external-links svg {
+  height: 80%;
+  margin-right: 12px;
+}
